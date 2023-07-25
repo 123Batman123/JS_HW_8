@@ -38,3 +38,7 @@ class showContent {
 }
 
 new showContent(allClassReveal)
+
+// document.addEventListener('scroll', () => {
+//     console.log(allClassReveal[0].getBoundingClientRect())
+// })

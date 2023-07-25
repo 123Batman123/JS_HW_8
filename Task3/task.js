@@ -22,12 +22,12 @@ function changeActivePosition(listClasses, position, findClass, firstPart, needA
     classBookContent.classList.add(firstPart+size)
 }
 
-function assignKey(listClasses, findClass, firstPart, needAttribyte) {
+function assignKey(listClasses, listArgs/*findClass, firstPart, needAttribyte*/) {
     listClasses.forEach((el) => {
         el.addEventListener('click', (event) => {
             event.preventDefault()
             let indexToChanges = listClasses.indexOf(el)
-            changeActivePosition(listClasses, indexToChanges, findClass, firstPart, needAttribyte)
+            changeActivePosition(listClasses, indexToChanges, ...listArgs)
         })
     })
 }
@@ -37,14 +37,14 @@ for (let i of allBookControl) {
     let block = NaN
     if (i.classList.contains('book__control_font-size')) {
         block = [...i.querySelectorAll('.font-size')]
-        assignKey(p, 'font-size_active', 'book_fs-', 'data-size')
+        assignKey(block, ['font-size_active', 'book_fs-', 'data-size'])
     } 
     else if (i.classList.contains('book__control_color')) {
         block = [...i.querySelectorAll('.color')]
-        assignKey(p, 'color_active', 'book_color-', 'data-text-color')
+        assignKey(block, ['color_active', 'book_color-', 'data-text-color'])
     }
     else if (i.classList.contains('book__control_background')) {
         block = [...i.querySelectorAll('.color')]
-        assignKey(p, 'color_active', 'bg_color_', 'data-bg-color')
+        assignKey(block, ['color_active', 'bg_color_', 'data-bg-color'])
     }
 }
